@@ -4,14 +4,8 @@ from flask import jsonify
 import json
 # for linking frontend-backend
 from flask_cors import CORS
-
-# for random ids
-# import random
-# import string
-
 # for mongo db
 from model_mongodb import User
-
 
 app = Flask(__name__)
 # CORS stands for Cross Origin Requests.
@@ -22,17 +16,9 @@ users = {
     'users_list': []
 }
 
-
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
-
-# def gen_random_id():
-#   random_id = ''.join([random.choice(string.ascii_letters
-#            + string.digits) for n in range(6)])
-#   print (random_id)
-#   return random_id
-
 
 @app.route('/users', methods=['GET', 'POST'])
 def get_users():
@@ -50,8 +36,6 @@ def get_users():
         return {"users_list": users}
     elif request.method == 'POST':
         userToAdd = request.get_json()
-        # userToAdd['id'] = gen_random_id() # check for duplicate before appending.. todo
-        # users['users_list'].append(userToAdd)
         # updated for db_access
         # make DB request to add user
         newUser = User(userToAdd)
@@ -59,6 +43,18 @@ def get_users():
         resp = jsonify(newUser), 201
         return resp
 
+@app.route('/artist', methods=['GET', 'POST'])
+def get_artist():
+    if request.method == 'GET':
+        search_name = request.args.get('name')
+        if search_name:
+            artist = {"name": search_name} # call the parent_node functions to do this work
+        else:
+            artist = {"name": "search_field_empty"}
+        return artist
+    else:
+        resp = jsonify("ok"), 201
+        return resp
 
 @app.route('/users/<id>', methods=['GET', 'DELETE'])
 def get_user(id):
@@ -77,14 +73,6 @@ def get_user(id):
             return resp
         else:
             return jsonify({"error": "User not found"}), 404
-            
-        #for user in users['users_list']:
-         #   if user['id'] == id:
-          #      users['users_list'].remove(user)
-                # 204 is the default code for a normal response, no other input returned
-           #     resp = jsonify({}), 204
-            #    return resp
-        #return jsonify({"error": "User not found"}), 404
 
 
 def find_users_by_name_job(name, job):
