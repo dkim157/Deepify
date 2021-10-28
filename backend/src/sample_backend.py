@@ -6,6 +6,8 @@ import json
 from flask_cors import CORS
 # for mongo db
 from model_mongodb import User
+# for parent nodes
+from parent_node import ParentNode
 
 app = Flask(__name__)
 # CORS stands for Cross Origin Requests.
@@ -15,6 +17,20 @@ CORS(app)
 users = {
     'users_list': []
 }
+
+@app.route('/artist', methods=['GET', 'POST'])
+def get_artist():
+    if request.method == 'GET':
+        artist_name = request.args.get('name')
+        if artist_name:
+            artist = ParentNode.get_artist_data(artist_name)
+        else:
+            artist = {"name": "search_field_empty"}
+        resp = jsonify(artist), 201
+        return resp
+    else:
+        resp = jsonify("ok"), 201
+        return resp
 
 @app.route('/')
 def hello_world():
@@ -41,19 +57,6 @@ def get_users():
         newUser = User(userToAdd)
         newUser.save()
         resp = jsonify(newUser), 201
-        return resp
-
-@app.route('/artist', methods=['GET', 'POST'])
-def get_artist():
-    if request.method == 'GET':
-        search_name = request.args.get('name')
-        if search_name:
-            artist = {"name": search_name} # call the parent_node functions to do this work
-        else:
-            artist = {"name": "search_field_empty"}
-        return artist
-    else:
-        resp = jsonify("ok"), 201
         return resp
 
 @app.route('/users/<id>', methods=['GET', 'DELETE'])

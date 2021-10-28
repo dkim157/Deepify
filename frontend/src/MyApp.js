@@ -49,16 +49,20 @@ function MyApp() {
     }
  }
 
+ // this takes the artist data, console logs it, and then adds the artist to the list from prev assignment
+ // use this data to create our starting page
  function updateList(person) { 
-  makePostCall(person).then( result => {
+  makeGetCall(person).then( result => {
+  console.log(result)
   if (result)
      setCharacters([...characters, result] );
   });
 }
 
- async function makePostCall(person){
+ async function makeGetCall(person){
     try {
-     const response = await axios.post('http://localhost:5000/users', person);
+     // this gets the artist data and returns it to updateList
+     const response = await axios.get('http://localhost:5000/artist?name=' + person["name"]);
      return response.data; 
     }
     catch (error) {
