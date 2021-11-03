@@ -24,6 +24,11 @@ function TableBody(props) {
     return (
       <tr key={index}>
         <td>{row.name}</td>
+        <td>{row.top_tracks[0].title}</td>
+        <td>{row.top_tracks[1].title}</td>
+        <td>{row.top_tracks[2].title}</td>
+        <td>{row.top_tracks[3].title}</td>
+        <td>{row.top_tracks[4].title}</td>
         <td>
           <button onClick={() => props.removeCharacter(index)}>Delete</button>
         </td>
