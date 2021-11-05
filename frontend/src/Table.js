@@ -1,4 +1,12 @@
 import React from 'react'
+import SpotifyPlayer from 'react-spotify-player'
+
+const size = {
+  width: '100%',
+  height: 90,
+};
+const view = 'coverart'; // 'list' or 'coverart'
+const theme = 'black'; // 'black' or 'white'
 
 function Table (props) {
   return (
@@ -24,11 +32,36 @@ function TableBody(props) {
     return (
       <tr key={index}>
         <td>{row.name}</td>
-        <td>{row.top_tracks[0].title}</td>
-        <td>{row.top_tracks[1].title}</td>
-        <td>{row.top_tracks[2].title}</td>
-        <td>{row.top_tracks[3].title}</td>
-        <td>{row.top_tracks[4].title}</td>
+        <td><SpotifyPlayer
+          uri={[row.top_tracks[0].uri]}
+          size={size}
+          view = {view}
+          theme = {theme}
+        /></td>
+        <td><SpotifyPlayer
+          uri={[row.top_tracks[1].uri]}
+          size={size}
+          view = {view}
+          theme = {theme}
+        /></td>
+        <td><SpotifyPlayer
+          uri={[row.top_tracks[2].uri]}
+          size={size}
+          view = {view}
+          theme = {theme}
+        /></td>
+        <td><SpotifyPlayer
+          uri={[row.top_tracks[3].uri]}
+          size={size}
+          view = {view}
+          theme = {theme}
+        /></td>
+        <td><SpotifyPlayer
+          uri={[row.top_tracks[4].uri]}
+          size={size}
+          view = {view}
+          theme = {theme}
+        /></td>
         <td>
           <button onClick={() => props.removeCharacter(index)}>Delete</button>
         </td>
