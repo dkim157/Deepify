@@ -8,4 +8,4 @@ def test_get_artist_success():
 
 def test_get_artist_fail():  
    expected = []
-   assertFalse sample_backend.get_artist("Jeff") == expected
+   assert sample_backend.get_artist("Jeff") != expected
