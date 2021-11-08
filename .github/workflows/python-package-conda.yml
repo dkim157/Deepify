@@ -21,6 +21,10 @@ jobs:
     - name: Install dependencies
       run: |
         conda env update --file environment.yml --name base
+        shell: /usr/bin/bash -e {0}
+        env:
+          pythonLocation: /opt/hostedtoolcache/Python/3.9.5/x64
+          LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.5/x64/lib
     - name: Lint with flake8
       run: |
         conda install flake8
