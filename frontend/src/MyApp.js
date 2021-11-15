@@ -4,6 +4,44 @@ import Table from './Table';
 import Form from './Form';
 
 
+
+// import React from 'react';
+import Tree from 'react-tree-graph';
+import data from './data.ts';
+import 'react-tree-graph/dist/style.css'
+import './App.css';
+
+// const App: React.FC = (props: any) => {
+//   return (
+//     <Tree
+// 	data={data}
+// 	height={700}
+// 	width={1000}/>
+//   );
+// }
+
+const App: React.FC = () => {
+  let data = {
+	name: 'Parent Artist',
+	children: [{
+		name: 'Child Artist One'
+	}, {
+		name: 'Child Artist Two'
+	}]
+};
+
+  return (
+    <Tree
+	data={data}
+	height={700}
+	width={700}/>
+  );
+}
+
+export default App;
+
+
+
 function MyApp() {
   const [characters, setCharacters] = useState([]);
 
@@ -79,5 +117,4 @@ function MyApp() {
   );  
 }
 
-
-export default MyApp;
+// export default MyApp;
