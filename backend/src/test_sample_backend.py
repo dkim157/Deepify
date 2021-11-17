@@ -8,6 +8,6 @@ def test_get_artist_success():
 
 def test_get_artist_fail():  
    expected = []
-   assert sample_backend.get_artist("Jeff") == expected
+   assert ParentNode.get_artist_data("Jeff")['name'] != expected
 
 test_get_artist_success()
