@@ -24,7 +24,7 @@ function Form(props) {
   }
   return (
     <form>
-      <label htmlFor="name">Artist Name</label>
+      <label htmlFor="name">Enter Artist's Name</label>
       <input
         type="text"
         name="name"
