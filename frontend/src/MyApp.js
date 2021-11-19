@@ -10,6 +10,7 @@ import Tree from 'react-tree-graph';
 import data from './data.ts';
 import 'react-tree-graph/dist/style.css'
 import './App.css';
+import SpotifyPlayer from 'react-spotify-player'
 
 // const App: React.FC = (props: any) => {
 //   return (
@@ -24,9 +25,11 @@ const App: React.FC = () => {
   let data = {
 	name: 'Parent Artist',
 	children: [{
-		name: 'Child Artist One'
+		name: '[hello,hello]',
+    children: 'other artist'
 	}, {
-		name: 'Child Artist Two'
+		name: 'Child Artist Two',
+    children: 'other artist'
 	}]
 };
 
