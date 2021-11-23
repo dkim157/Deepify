@@ -1,4 +1,5 @@
 # spotify imports
+import random
 import spotipy
 import pprint
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -21,6 +22,30 @@ class ParentNode():
                 })
         return track_list
 
+    # data is the parent node
+    def populate_child_nodes(data, sp):
+        lim = 50
+        collabs = {}
+
+        # populate collaboration dict
+        json = sp.artist_albums(data['uri'], album_type='album', country='US', limit=lim, offset=0)
+        for album in json['items']:
+            tracks = sp.album_tracks(album['id'], limit=lim, offset=0, market='US')
+            for track in tracks['items']:
+                for artist in track['artists']:
+                    if artist['name'] != data['name']:
+                        collabs[artist['name']] = track['uri']
+                        # supports multiple tracks but doesn't filter duplicates
+                        #if artist['name'] in collabs:
+                        #    collabs[artist['name']] += [track['name']]
+                        #else:
+                        #    collabs[artist['name']] = [track['name']]                            
+        # trim collabs to 3 
+        while len(collabs) > 3:
+            collabs.pop(random.choice(list(collabs.keys())))
+
+        return collabs
+
     def get_artist_data(search_value):
         # apotify auth
         auth_manager = SpotifyClientCredentials()
@@ -34,4 +59,5 @@ class ParentNode():
             data['name'] = search_result['artists']['items'][0]['name']
             data['uri'] = search_result['artists']['items'][0]['uri']
             data['top_tracks'] = ParentNode.populate_top_tracks(data['uri'], sp)
+            data['collabs'] = ParentNode.populate_child_nodes(data, sp)
             return data
