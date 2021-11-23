@@ -73,8 +73,26 @@ function MyApp() {
 
   return (
     <div className="container">
+      <div class="row">
+        <br></br>
+        <div class="title">deepify</div>
+        <br></br>
+      </div>
+
+      {/* <div class="row">
+        <div class="six columns">
+          <h4>find new artists</h4>
+        </div>
+        <div class="four columns">
+          <h4>SAN FRANCISCO MUSEUM OF MODERN ART - SOUNDTRACKS EXHIBIT VIDEO</h4>
+        </div>
+      </div> */}
+
+      <div class="centerButton">
+        <Form handleSubmit={updateList} />
+      </div>
       <Table characterData={characters} removeCharacter={removeOneCharacter} />
-      <Form handleSubmit={updateList} />
+      
     </div>
   );  
 }
