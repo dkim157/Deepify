@@ -8,4 +8,4 @@ def test_get_artist_success():
 
 def test_get_artist_fail():  
    expected = []
-   assert ParentNode.get_artist_data("Jeff")['name'] != expected
+   assert ParentNode.get_artist_data('Jeff')['name'] != expected
