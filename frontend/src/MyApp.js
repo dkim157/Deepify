@@ -5,6 +5,47 @@ import CollabTable from './CollabTable';
 import Form from './Form';
 
 
+
+// import React from 'react';
+import Tree from 'react-tree-graph';
+import data from './data.ts';
+import 'react-tree-graph/dist/style.css'
+import './App.css';
+import SpotifyPlayer from 'react-spotify-player'
+
+// const App: React.FC = (props: any) => {
+//   return (
+//     <Tree
+// 	data={data}
+// 	height={700}
+// 	width={1000}/>
+//   );
+// }
+
+const App: React.FC = () => {
+  let data = {
+	name: 'Parent Artist',
+	children: [{
+		name: '[hello,hello]',
+    children: 'other artist'
+	}, {
+		name: 'Child Artist Two',
+    children: 'other artist'
+	}]
+};
+
+  return (
+    <Tree
+	data={data}
+	height={700}
+	width={700}/>
+  );
+}
+
+export default App;
+
+
+
 function MyApp() {
   const [characters, setCharacters] = useState([]);
   const [isVisible, setIsVisible] = useState(true);
