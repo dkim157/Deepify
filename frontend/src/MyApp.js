@@ -1,18 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import Table from './Table';
+import CollabTable from './CollabTable';
 import Form from './Form';
 
 
 function MyApp() {
   const [characters, setCharacters] = useState([]);
+  const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
-    fetchAll().then( result => {
-       if (result)
-          setCharacters(result);
-     });
-  }, [] );
+  function toggle() {
+    setIsVisible(wasVisible => !wasVisible);
+  }
 
   function removeOneCharacter (index) {
     makeDel(characters[index]);
@@ -29,31 +28,16 @@ function MyApp() {
       return response;
     }
     catch (error){
-      //We're not handling errors. Just logging into the console.
       console.log(error); 
       return false;         
     }
   }
-  
-
-  async function fetchAll(){
-    try {
-       const response = await axios.get('http://localhost:5000/users');
-       console.log(response)
-       return response.data.users_list;
-    }
-    catch (error){
-       //We're not handling errors. Just logging into the console.
-       console.log(error); 
-       return false;         
-    }
- }
 
  // this takes the artist data, console logs it, and then adds the artist to the list from prev assignment
  // use this data to create our starting page
  function updateList(person) { 
+  toggle()
   makeGetCall(person).then( result => {
-  console.log(result)
   if (result)
      setCharacters([...characters, result] );
   });
@@ -70,7 +54,6 @@ function MyApp() {
      return false;
     }
   }
-
   return (
     <div className="container">
       <div class="row">
@@ -78,24 +61,21 @@ function MyApp() {
         <div class="title">deepify</div>
         <br></br>
       </div>
-
-      {/* <div class="row">
-        <div class="six columns">
-          <h4>find new artists</h4>
-        </div>
-        <div class="four columns">
-          <h4>SAN FRANCISCO MUSEUM OF MODERN ART - SOUNDTRACKS EXHIBIT VIDEO</h4>
-        </div>
-      </div> */}
-
-      <div class="centerButton">
-        <Form handleSubmit={updateList} />
-      </div>
-      <Table characterData={characters} removeCharacter={removeOneCharacter} />
-      
+        {isVisible && (
+          <div class="centerButton">
+            <Form handleSubmit={updateList} />
+          </div>
+        )}
+        <table>
+          {!isVisible && (
+            <Table characterData={characters} removeCharacter={removeOneCharacter} />
+          )}
+          {!isVisible && (
+            <CollabTable characterData={characters} removeCharacter={removeOneCharacter} />
+          )}
+        </table>
     </div>
   );  
 }
-
 
 export default MyApp;
