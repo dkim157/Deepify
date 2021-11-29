@@ -38,7 +38,7 @@ class ParentNode():
         while len(collabs) > 3:
             i = random.randrange(len(collabs)) # get random index
             collabs[i], collabs[-1] = collabs[-1], collabs[i]    # swap with the last element
-            collabs.pop()     
+            collabs.pop() 
         return collabs
 
     def get_artist_data(search_value):

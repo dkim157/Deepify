@@ -15,34 +15,18 @@ function MyApp() {
     setIsVisible(wasVisible => !wasVisible);
   }
 
-  function removeOneCharacter (index) {
-    makeDel(characters[index]);
-
-    const updated = characters.filter((character, i) => {
-      return i !== index
-    });
-    setCharacters(updated);
-  }
-
-  async function makeDel(userToDelete){
-    try {      
-      const response = await axios.delete('http://localhost:5000/users/'+ userToDelete['_id']);
-      return response;
-    }
-    catch (error){
-      console.log(error); 
-      return false;         
-    }
-  }
-
  // this takes the artist data, console logs it, and then adds the artist to the list from prev assignment
  // use this data to create our starting page
- function updateList(person) { 
+ function updateList(person) {
   toggle()
   makeGetCall(person).then( result => {
   if (result)
      setCharacters([...characters, result] );
   });
+}
+
+function buttonClick(){
+  console.log("came here")
 }
 
  async function makeGetCall(person){
@@ -73,18 +57,15 @@ function MyApp() {
         )}
         {isVisible && (
           <div class="centerButton animate__animated animate__fadeInUp">
-            <Form handleSubmit={updateList} />
+            <Form handleSubmit={updateList}/>
           </div>
         )}
       </div>
-      <table>
+      <div class="parent-node">
         {!isVisible && (
-          <Table characterData={characters} removeCharacter={removeOneCharacter} />
+          <Table characterData={characters} />
         )}
-        {!isVisible && (
-          <CollabTable characterData={characters} removeCharacter={removeOneCharacter} />
-        )}
-      </table>
+      </div>
     </div>
   );  
 }

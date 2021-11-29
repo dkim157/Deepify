@@ -171,6 +171,22 @@ body {
   transform: translate(-50%, -60%);
 }
 
+.parent-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table {
+  border-width: 10px;
+  border-color: #333;
+}
+
+.collab-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .title { 
   font-family: 'Overlock', serif;
   font-weight: 900;
