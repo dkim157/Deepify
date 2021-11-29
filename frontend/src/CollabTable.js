@@ -1,5 +1,8 @@
 import React from 'react'
 import SpotifyPlayer from 'react-spotify-player'
+import Form from './Form'
+import updateList from './MyApp'
+import setPerson from './MyApp'
 
 const size = {
   width: '100%',
@@ -10,9 +13,9 @@ const theme = 'black'; // 'black' or 'white'
 
 function Table (props) {
   return (
-    <table>
-      <TableHeader characterData={props.characterData}/>
-      <TableBody characterData={props.characterData} removeCharacter={props.removeCharacter} />
+    <table align="center" class="table2">
+      <TableHeader characterData={props.characterData} align="center"/>
+      <TableBody characterData={props.characterData} removeCharacter={props.removeCharacter}align="center"/>
     </table>
   );
 }
@@ -36,9 +39,12 @@ function TableBody(props) {
   const rows = props.characterData.map((row, index, _id) => {
     const keys = Object.keys(row.collabs)
     console.log(keys)
+    const p1 = setPerson(keys[0])
+
     return (
         <>
           <tr key={"A"}>
+            {/* <td><button onClick={()=>updateList(p1)} >{keys[0]}</button></td> */}
             <td>{keys[0]}</td>
             <td><SpotifyPlayer
               uri={row.collabs[keys[0]]}
@@ -68,8 +74,9 @@ function TableBody(props) {
         </>
     );
   });
+  //  console.log(rows[0].props.children[0].props.children[0].props)
    return (
-     <tbody>{rows}</tbody>
+    <tbody>{rows}</tbody>
    )
 }
 

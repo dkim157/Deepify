@@ -47,6 +47,8 @@ function MyApp() {
     try {
      // this gets the artist data and returns it to updateList
      const response = await axios.get('http://localhost:5000/artist?name=' + person["name"]);
+
+     console.log(CollabTable)
      return response.data; 
     }
     catch (error) {
