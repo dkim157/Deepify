@@ -10,8 +10,8 @@ const theme = 'black'; // 'black' or 'white'
 
 function Table (props) {
   return (
-    <table class="table1">
-      <TableHeader characterData={props.characterData} />
+    <table class="table">
+      <TableHeader characterData={props.characterData}/>
       <TableBody characterData={props.characterData} removeCharacter={props.removeCharacter} />
     </table>
   );

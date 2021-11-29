@@ -4,7 +4,6 @@ function Form(props) {
   const [person, setPerson] = useState(
      {
         name: '',
-        // job: '',
      }
   );
   function handleChange(event) {
@@ -23,15 +22,16 @@ function Form(props) {
     setPerson({name: ''});
   }
   return (
-    <form>
-      <label htmlFor="name">Enter Artist's Name</label>
+    <form id="form">
       <input
         type="text"
         name="name"
-        id="name"
+        id="input"
+        autoComplete="off"
         value={person.name}
-        onChange={handleChange} />
-      <input type="button" value="Submit" onClick={submitForm} />
+        onChange={handleChange}
+        placeholder="Enter Artist Name" />
+      <input id="submit" type="button" value="Search" onClick={submitForm} />
     </form>
   );
 }
