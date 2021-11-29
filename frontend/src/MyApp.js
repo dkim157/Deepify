@@ -3,6 +3,8 @@ import axios from 'axios';
 import Table from './Table';
 import CollabTable from './CollabTable';
 import Form from './Form';
+import backgroundVideo from './background.mp4'
+import 'animate.css';
 
 
 function MyApp() {
@@ -56,24 +58,33 @@ function MyApp() {
   }
   return (
     <div className="container">
-      <div class="row">
-        <br></br>
-        <div class="title">deepify</div>
-        <br></br>
+      <div class="video-wrap">
+        <video autoPlay muted loop id="myVideo">
+          <source src={backgroundVideo} type="video/mp4"></source>
+        </video>
       </div>
+      <div class="video-overlay"></div>
+      <div id="content">
+        {isVisible &&(
+          <div class="title animate__animated animate__fadeInDown">deepify</div>
+        )}
+        {isVisible &&(
+          <div class="title2 animate__animated animate__fadeIn">search an artist. find collabs. go deeper.</div>
+        )}
         {isVisible && (
-          <div class="centerButton">
+          <div class="centerButton animate__animated animate__fadeInUp">
             <Form handleSubmit={updateList} />
           </div>
         )}
-        <table>
-          {!isVisible && (
-            <Table characterData={characters} removeCharacter={removeOneCharacter} />
-          )}
-          {!isVisible && (
-            <CollabTable characterData={characters} removeCharacter={removeOneCharacter} />
-          )}
-        </table>
+      </div>
+      <table>
+        {!isVisible && (
+          <Table characterData={characters} removeCharacter={removeOneCharacter} />
+        )}
+        {!isVisible && (
+          <CollabTable characterData={characters} removeCharacter={removeOneCharacter} />
+        )}
+      </table>
     </div>
   );  
 }
