@@ -25,25 +25,20 @@ class ParentNode():
     # data is the parent node
     def populate_child_nodes(data, sp):
         lim = 50
-        collabs = {}
-
+        collabs = []
         # populate collaboration dict
         json = sp.artist_albums(data['uri'], album_type='album', country='US', limit=lim, offset=0)
         for album in json['items']:
             tracks = sp.album_tracks(album['id'], limit=lim, offset=0, market='US')
             for track in tracks['items']:
                 for artist in track['artists']:
-                    if artist['name'] != data['name']:
-                        collabs[artist['name']] = track['uri']
-                        # supports multiple tracks but doesn't filter duplicates
-                        #if artist['name'] in collabs:
-                        #    collabs[artist['name']] += [track['name']]
-                        #else:
-                        #    collabs[artist['name']] = [track['name']]                            
-        # trim collabs to 3 
+                    if artist['name'] != data['name']: # prevent collaboration with self
+                        collabs.append({"name": str(artist['name']), "track": track['uri']})
+        # trim collabs to 3
         while len(collabs) > 3:
-            collabs.pop(random.choice(list(collabs.keys())))
-
+            i = random.randrange(len(collabs)) # get random index
+            collabs[i], collabs[-1] = collabs[-1], collabs[i]    # swap with the last element
+            collabs.pop()     
         return collabs
 
     def get_artist_data(search_value):
