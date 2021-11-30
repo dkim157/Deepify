@@ -15,6 +15,7 @@ A web app that makes browsing music easier with Spotify's API
   - npm react-spotify-player 
 
 ## UI Prototype
+(Last Updated October 19, 2021)
 https://drive.google.com/file/d/1e2gVWYVGpzmR0QqcR_dSuGEGFb3_McMj/view?usp=sharing
 
 ## Formatting
