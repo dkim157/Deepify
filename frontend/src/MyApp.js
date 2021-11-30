@@ -26,9 +26,10 @@ function MyApp() {
   });
 }
 
-function buttonClick(){
-  console.log("came here")
-}
+const size = {
+  width: '100%',
+  height: 80,
+};
 
  async function makeGetCall(person){
     try {
@@ -82,7 +83,7 @@ function buttonClick(){
       <div class="video-overlay"></div>
       <div id="content">
         {isVisible &&(
-          <div class="title animate__animated animate__fadeInDown">deepify</div>
+          <div class="title animate__animated animate__fadeInDown">Deepify</div>
         )}
         {isVisible &&(
           <div class="title2 animate__animated animate__fadeIn">search an artist. find collabs. go deeper.</div>
@@ -93,42 +94,60 @@ function buttonClick(){
           </div>
         )}
       </div>
-      <div class="parent-node">
-        {!isVisible && (
-          <Table characterData={characters} />
-        )}
-      </div>
-      <div>
-        {!isVisible && (
-          <button onClick={()=>updateList(choiceA)}> {choiceA.name} </button>
-        ) && (
-          <td><SpotifyPlayer
-            uri={choiceA_uri}
-            size={1}
-            // view = {10}
-            // theme = {theme}
-          /></td>
-        )}
-        {!isVisible && (
-          <button onClick={()=>updateList(choiceB)}> {choiceB.name} </button>
-        ) && (
-          <td><SpotifyPlayer
-            uri={choiceB_uri}
-            size={1}
-            // view = {10}
-            // theme = {theme}
-          /></td>
-        )}
-        {!isVisible && (
-          <button onClick={()=>updateList(choiceC)}> {choiceC.name} </button>
-        ) && (
-          <td><SpotifyPlayer
-            uri={choiceA_uri}
-            size={1}
-            // view = {10}
-            // theme = {theme}
-          /></td>
-        )}
+
+      <div class="row">
+        <div class="one-third column">
+          {!isVisible && (
+            <Table characterData={characters} />
+          )}
+        </div>
+        <div class="two-thirds column">
+          {!isVisible && (
+          <div class="table">
+            <thead>
+              <tr>
+                <th>Song </th>
+                <th>Artist</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <button onClick={()=>updateList(choiceA)}> {choiceA.name} </button>
+                </td>
+                <td>
+                  <SpotifyPlayer
+                    uri={choiceA_uri}
+                    size={size}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button onClick={()=>updateList(choiceB)}> {choiceB.name} </button>
+                </td>
+                <td>
+                    <SpotifyPlayer
+                      uri={choiceB_uri}
+                      size={size}
+                    />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button onClick={()=>updateList(choiceC)}> {choiceC.name} </button>
+                </td>
+                <td>
+                    <SpotifyPlayer
+                      uri={choiceC_uri}
+                      size={size}
+                    />
+                </td>
+              </tr>
+            </tbody>
+          </div>
+          )}
+        </div>
       </div>
     </div>
   );  
