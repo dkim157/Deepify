@@ -11,10 +11,9 @@ Setup Frontend
  1. Navigate to Deepify/frontend/src 
  2. run the following commands: 
 
-  a. export SPOTIPY_CLIENT_ID='your-spotify-client-id' 
-  b. export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret' 
-  c. export SPOTIPY_REDIRECT_URI='your-app-redirect-url' 
-  d. npm react-spotify-player 
+  - export SPOTIPY_CLIENT_ID='your-spotify-client-id' 
+  - export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret' 
+  - npm react-spotify-player 
 
 ### Prettier for JavaScript Formatting 
 (source: [create-react-app.dev/docs/setting-up-your-editor](https://create-react-app.dev/docs/setting-up-your-editor))
