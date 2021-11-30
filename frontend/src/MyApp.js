@@ -25,15 +25,10 @@ function MyApp() {
   });
 }
 
-function buttonClick(){
-  console.log("came here")
-}
-
  async function makeGetCall(person){
     try {
      // this gets the artist data and returns it to updateList
      const response = await axios.get('http://localhost:5000/artist?name=' + person["name"]);
-     console.log(response.data.collabs[0].name);
      return response.data; 
     }
     catch (error) {
@@ -54,9 +49,9 @@ function buttonClick(){
   if (characters.length > 0) {
     let index =  characters.length - 1;
     
-    console.log(index);
+    /*console.log(index);
     console.log(characters);
-    console.log(characters[index].collabs[0].name);
+    console.log(characters[index].collabs[0].name);*/
     choiceA = {name: characters[index].collabs[0].name};
     choiceB = {name: characters[index].collabs[1].name};
     choiceC = {name: characters[index].collabs[2].name};
