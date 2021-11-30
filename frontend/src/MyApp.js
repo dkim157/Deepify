@@ -5,6 +5,7 @@ import CollabTable from './CollabTable';
 import Form from './Form';
 import backgroundVideo from './background.mp4'
 import 'animate.css';
+import SpotifyPlayer from 'react-spotify-player'
 
 
 function MyApp() {
@@ -47,6 +48,10 @@ function buttonClick(){
   let choiceB = {name : "Bladee" };
   let choiceC = {name : "Bladee" };
 
+  let choiceA_uri = null;
+  let choiceB_uri = null;
+  let choiceC_uri = null;
+
   if (characters.length > 1) {
     characters.splice(0, 1);
   }
@@ -57,9 +62,14 @@ function buttonClick(){
     console.log(index);
     console.log(characters);
     console.log(characters[index].collabs[0].name);
+    console.log(characters[index].collabs[0].track);
     choiceA = {name: characters[index].collabs[0].name};
     choiceB = {name: characters[index].collabs[1].name};
     choiceC = {name: characters[index].collabs[2].name};
+
+    choiceA_uri = characters[index].collabs[0].track;
+    choiceB_uri = characters[index].collabs[1].track;
+    choiceC_uri = characters[index].collabs[2].track;
   }
 
   return (
@@ -91,12 +101,33 @@ function buttonClick(){
       <div>
         {!isVisible && (
           <button onClick={()=>updateList(choiceA)}> {choiceA.name} </button>
+        ) && (
+          <td><SpotifyPlayer
+            uri={choiceA_uri}
+            size={1}
+            // view = {10}
+            // theme = {theme}
+          /></td>
         )}
         {!isVisible && (
           <button onClick={()=>updateList(choiceB)}> {choiceB.name} </button>
+        ) && (
+          <td><SpotifyPlayer
+            uri={choiceB_uri}
+            size={1}
+            // view = {10}
+            // theme = {theme}
+          /></td>
         )}
         {!isVisible && (
           <button onClick={()=>updateList(choiceC)}> {choiceC.name} </button>
+        ) && (
+          <td><SpotifyPlayer
+            uri={choiceA_uri}
+            size={1}
+            // view = {10}
+            // theme = {theme}
+          /></td>
         )}
       </div>
     </div>
