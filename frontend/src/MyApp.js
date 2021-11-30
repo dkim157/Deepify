@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import Table from './Table';
-import CollabTable from './CollabTable';
 import Form from './Form';
 import backgroundVideo from './background.mp4'
 import 'animate.css';
 import SpotifyPlayer from 'react-spotify-player'
+import Swal from 'sweetalert2'
 
 
 function MyApp() {
@@ -19,10 +19,29 @@ function MyApp() {
  // this takes the artist data, console logs it, and then adds the artist to the list from prev assignment
  // use this data to create our starting page
  function updateList(person) {
-  toggle()
   makeGetCall(person).then( result => {
-  if (result)
-     setCharacters([...characters, result]);
+    //search not found
+    if (result == false){
+      Swal.fire({
+        title: "Search Not Found :(",
+        text: "Did you spell the name correctly?",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#3441B3"
+      })
+    }
+    //if search field empty
+    else if (result['name'] == "search_field_empty"){
+      Swal.fire({
+        title: "You didn't search for anything silly",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#3441B3"
+      })
+    }
+    //if artist data comes back
+    else if (result){
+      toggle()
+      setCharacters([...characters, result]);
+    }
   });
 }
 
@@ -35,7 +54,6 @@ const size = {
     try {
      // this gets the artist data and returns it to updateList
      const response = await axios.get('http://localhost:5000/artist?name=' + person["name"]);
-     console.log(response.data.collabs[0].name);
      return response.data; 
     }
     catch (error) {
@@ -45,13 +63,17 @@ const size = {
   }
 
 
-  let choiceA = {name : "Bladee" };
-  let choiceB = {name : "Bladee" };
-  let choiceC = {name : "Bladee" };
+  let choiceA = {name : "" };
+  let choiceB = {name : "" };
+  let choiceC = {name : "" };
 
   let choiceA_uri = null;
   let choiceB_uri = null;
   let choiceC_uri = null;
+
+  let aState = true;
+  let bState = true;
+  let cState = true;
 
   if (characters.length > 1) {
     characters.splice(0, 1);
@@ -59,18 +81,33 @@ const size = {
   
   if (characters.length > 0) {
     let index =  characters.length - 1;
-    
-    console.log(index);
-    console.log(characters);
-    console.log(characters[index].collabs[0].name);
-    console.log(characters[index].collabs[0].track);
-    choiceA = {name: characters[index].collabs[0].name};
-    choiceB = {name: characters[index].collabs[1].name};
-    choiceC = {name: characters[index].collabs[2].name};
-
-    choiceA_uri = characters[index].collabs[0].track;
-    choiceB_uri = characters[index].collabs[1].track;
-    choiceC_uri = characters[index].collabs[2].track;
+    // set states to show/not show collabs and set name and track variables
+    if (characters[index].collabs.length == 0){
+      aState = false
+      bState = false
+      cState = false
+    }
+    else if (characters[index].collabs.length == 1){
+      choiceA = {name: characters[index].collabs[0].name};
+      choiceA_uri = characters[index].collabs[0].track;
+      bState = false
+      cState = false
+    }
+    else if (characters[index].collabs.length == 2){
+      choiceA = {name: characters[index].collabs[0].name};
+      choiceA_uri = characters[index].collabs[0].track;
+      choiceB = {name: characters[index].collabs[1].name};
+      choiceB_uri = characters[index].collabs[1].track;
+      cState = false
+    }
+    else {
+      choiceA = {name: characters[index].collabs[0].name};
+      choiceA_uri = characters[index].collabs[0].track;
+      choiceB = {name: characters[index].collabs[1].name};
+      choiceB_uri = characters[index].collabs[1].track;
+      choiceC = {name: characters[index].collabs[2].name};
+      choiceC_uri = characters[index].collabs[2].track;
+    }
   }
 
   return (
@@ -111,7 +148,8 @@ const size = {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              {aState && (
+                <tr>
                 <td>
                   <button onClick={()=>updateList(choiceA)}> {choiceA.name} </button>
                 </td>
@@ -122,28 +160,33 @@ const size = {
                   />
                 </td>
               </tr>
-              <tr>
+              )}
+              {bState && (
+                <tr>
                 <td>
                   <button onClick={()=>updateList(choiceB)}> {choiceB.name} </button>
                 </td>
                 <td>
-                    <SpotifyPlayer
-                      uri={choiceB_uri}
-                      size={size}
-                    />
+                  <SpotifyPlayer
+                    uri={choiceB_uri}
+                    size={size}
+                  />
                 </td>
               </tr>
-              <tr>
+              )}
+              {cState && (
+                <tr>
                 <td>
                   <button onClick={()=>updateList(choiceC)}> {choiceC.name} </button>
                 </td>
                 <td>
-                    <SpotifyPlayer
-                      uri={choiceC_uri}
-                      size={size}
-                    />
+                  <SpotifyPlayer
+                    uri={choiceC_uri}
+                    size={size}
+                  />
                 </td>
               </tr>
+              )}
             </tbody>
           </div>
           )}

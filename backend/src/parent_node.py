@@ -24,6 +24,7 @@ class ParentNode():
 
     # data is the parent node
     def populate_child_nodes(data, sp):
+        seen = {} # names already come across
         lim = 50
         collabs = []
         # populate collaboration dict
@@ -32,8 +33,10 @@ class ParentNode():
             tracks = sp.album_tracks(album['id'], limit=lim, offset=0, market='US')
             for track in tracks['items']:
                 for artist in track['artists']:
-                    if artist['name'] != data['name']: # prevent collaboration with self
-                        collabs.append({"name": str(artist['name']), "track": track['uri']})
+                    if (artist['name'] != data['name']) and not (artist['name'] in seen): # prevent collaboration with self, remove duplicates
+                        collabs.append({'name': str(artist['name']), "track": track['uri']})
+                        seen[artist['name']] = 1
+
         # trim collabs to 3
         while len(collabs) > 3:
             i = random.randrange(len(collabs)) # get random index
@@ -47,7 +50,7 @@ class ParentNode():
         sp = spotipy.Spotify(auth_manager=auth_manager)
 
         if (search_value is None) or (search_value == ''):
-            print("artist not found")
+            return None
         else:
             data = {}
             search_result = sp.search(search_value.lower(), limit=1, offset=0, type='artist', market='US')
