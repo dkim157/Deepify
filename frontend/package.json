@@ -12,6 +12,7 @@
     "react-scripts": "4.0.3",
     "react-spotify-player": "^1.0.4",
     "react-spotify-web-playback": "^0.9.1",
+    "sweetalert2": "^11.2.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

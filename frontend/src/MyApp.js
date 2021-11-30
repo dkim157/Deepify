@@ -143,8 +143,8 @@ const size = {
           <div class="table">
             <thead>
               <tr>
-                <th>Song </th>
-                <th>Artist</th>
+                <th>Collaborator</th>
+                <th>Song</th>
               </tr>
             </thead>
             <tbody>
