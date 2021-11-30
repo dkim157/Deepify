@@ -14,6 +14,9 @@ A web app that makes browsing music easier with Spotify's API
   - export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret' 
   - npm react-spotify-player 
 
+## UI Prototype
+https://drive.google.com/file/d/1e2gVWYVGpzmR0QqcR_dSuGEGFb3_McMj/view?usp=sharing
+
 ## Formatting
 ### Prettier for JavaScript Formatting 
 (source: [create-react-app.dev/docs/setting-up-your-editor](https://create-react-app.dev/docs/setting-up-your-editor))
