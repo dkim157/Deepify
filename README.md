@@ -10,7 +10,6 @@ Setup Backend
 Setup Frontend 
  1. Navigate to Deepify/frontend/src 
  2. run the following commands: 
-
   - export SPOTIPY_CLIENT_ID='your-spotify-client-id' 
   - export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret' 
   - npm react-spotify-player 
