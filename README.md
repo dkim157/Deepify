@@ -1,6 +1,6 @@
 # Deepify
 
-A web app that makes browsing music easier with Spotify's API
+A web app that utilizes Spotify's API to make browsing music easier. By entering an artist of one's choice, you will be able to see the artist's current top 5 tracks, a list of artists whom they have collabed with, and the song that features both the artist and the collaborator. Clicking on a collaborator's name will display that artist's top 5 tracks as well as those who they have collabed with. The goal of this web app is to dive deeper into spotify and explore new artists by seeing how they are connected through collaborations.
 
 ## Environment Setup
 **Setup Backend**
