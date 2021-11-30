@@ -45,3 +45,5 @@ A web app that makes browsing music easier with Spotify's API
     └── .gitignore
 
 ```
+## Diagrams
+https://github.com/dkim157/Deepify/wiki/Diagrams-of-Deepify-Web-Application
