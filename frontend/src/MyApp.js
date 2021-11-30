@@ -44,13 +44,17 @@ const size = {
   }
 
 
-  let choiceA = {name : "Bladee" };
-  let choiceB = {name : "Bladee" };
-  let choiceC = {name : "Bladee" };
+  let choiceA = {name : "" };
+  let choiceB = {name : "" };
+  let choiceC = {name : "" };
 
   let choiceA_uri = null;
   let choiceB_uri = null;
   let choiceC_uri = null;
+
+  let aState = true;
+  let bState = true;
+  let cState = true;
 
   if (characters.length > 1) {
     characters.splice(0, 1);
@@ -58,14 +62,33 @@ const size = {
   
   if (characters.length > 0) {
     let index =  characters.length - 1;
-    
-    choiceA = {name: characters[index].collabs[0].name};
-    choiceB = {name: characters[index].collabs[1].name};
-    choiceC = {name: characters[index].collabs[2].name};
-
-    choiceA_uri = characters[index].collabs[0].track;
-    choiceB_uri = characters[index].collabs[1].track;
-    choiceC_uri = characters[index].collabs[2].track;
+    // set states to show/not show collabs and set name and track variables
+    if (characters[index].collabs.length == 0){
+      aState = false
+      bState = false
+      cState = false
+    }
+    else if (characters[index].collabs.length == 1){
+      choiceA = {name: characters[index].collabs[0].name};
+      choiceA_uri = characters[index].collabs[0].track;
+      bState = false
+      cState = false
+    }
+    else if (characters[index].collabs.length == 2){
+      choiceA = {name: characters[index].collabs[0].name};
+      choiceA_uri = characters[index].collabs[0].track;
+      choiceB = {name: characters[index].collabs[1].name};
+      choiceB_uri = characters[index].collabs[1].track;
+      cState = false
+    }
+    else {
+      choiceA = {name: characters[index].collabs[0].name};
+      choiceA_uri = characters[index].collabs[0].track;
+      choiceB = {name: characters[index].collabs[1].name};
+      choiceB_uri = characters[index].collabs[1].track;
+      choiceC = {name: characters[index].collabs[2].name};
+      choiceC_uri = characters[index].collabs[2].track;
+    }
   }
 
   return (
@@ -106,7 +129,8 @@ const size = {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              {aState && (
+                <tr>
                 <td>
                   <button onClick={()=>updateList(choiceA)}> {choiceA.name} </button>
                 </td>
@@ -117,28 +141,33 @@ const size = {
                   />
                 </td>
               </tr>
-              <tr>
+              )}
+              {bState && (
+                <tr>
                 <td>
                   <button onClick={()=>updateList(choiceB)}> {choiceB.name} </button>
                 </td>
                 <td>
-                    <SpotifyPlayer
-                      uri={choiceB_uri}
-                      size={size}
-                    />
+                  <SpotifyPlayer
+                    uri={choiceB_uri}
+                    size={size}
+                  />
                 </td>
               </tr>
-              <tr>
+              )}
+              {cState && (
+                <tr>
                 <td>
                   <button onClick={()=>updateList(choiceC)}> {choiceC.name} </button>
                 </td>
                 <td>
-                    <SpotifyPlayer
-                      uri={choiceC_uri}
-                      size={size}
-                    />
+                  <SpotifyPlayer
+                    uri={choiceC_uri}
+                    size={size}
+                  />
                 </td>
               </tr>
+              )}
             </tbody>
           </div>
           )}

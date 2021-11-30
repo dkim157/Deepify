@@ -347,7 +347,7 @@ input[type="button"].button-primary:focus {
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   text-align: left;
-  color: pink;
+  color: grey;
   font-family: 'Overlock', cursive;
   font-weight: 400;
   font-size: 1.4rem;
