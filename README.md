@@ -10,6 +10,7 @@ Setup Backend
 Setup Frontend 
  1. Navigate to Deepify/frontend/src 
  2. run the following commands: 
+
   a. export SPOTIPY_CLIENT_ID='your-spotify-client-id' 
   b. export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret' 
   c. export SPOTIPY_REDIRECT_URI='your-app-redirect-url' 
