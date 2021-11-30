@@ -5,14 +5,14 @@ A web app that makes browsing music easier with Spotify's API
 ## Environment Setup
 A. Setup Backend
  1. Navigate to Deepify/backend/src
- 2. run "./start-backend"
-B. Setup Frontend
- 1. Navigate to Deepify/frontend/src
- 2. run the following commands:
-  a. export SPOTIPY_CLIENT_ID='your-spotify-client-id'
-  b. export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret'
-  c. export SPOTIPY_REDIRECT_URI='your-app-redirect-url'
-  d. npm react-spotify-player
+ 2. run "./start-backend" \n
+B. Setup Frontend 
+ 1. Navigate to Deepify/frontend/src 
+ 2. run the following commands: 
+  a. export SPOTIPY_CLIENT_ID='your-spotify-client-id' 
+  b. export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret' 
+  c. export SPOTIPY_REDIRECT_URI='your-app-redirect-url' 
+  d. npm react-spotify-player 
 
 ### Prettier for JavaScript Formatting 
 (source: [create-react-app.dev/docs/setting-up-your-editor](https://create-react-app.dev/docs/setting-up-your-editor))
