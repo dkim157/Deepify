@@ -3,11 +3,11 @@
 A web app that makes browsing music easier with Spotify's API
 
 ## Environment Setup
-**Setup Backend
+**Setup Backend**
  1. Navigate to Deepify/backend/src
  2. run "./start-backend" \n
 
-**Setup Frontend 
+**Setup Frontend**
  1. Navigate to Deepify/frontend/src 
  2. run the following commands: 
   - export SPOTIPY_CLIENT_ID='your-spotify-client-id' 
