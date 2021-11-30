@@ -16,6 +16,7 @@ A web app that utilizes Spotify's API to make browsing music easier. By entering
 
 ## UI Prototype
 (Last Updated October 19, 2021)
+
 https://drive.google.com/file/d/1e2gVWYVGpzmR0QqcR_dSuGEGFb3_McMj/view?usp=sharing
 
 ## Formatting
