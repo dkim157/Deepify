@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 function Form(props) {
   const [person, setPerson] = useState(
@@ -21,6 +21,21 @@ function Form(props) {
     props.handleSubmit(person);
     setPerson({name: ''});
   }
+
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        console.log("Enter key was pressed. Run your function.");
+        event.preventDefault();
+        document.getElementById("submit").click()
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, []);
+
   return (
     <form id="form">
       <input
