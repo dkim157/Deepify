@@ -14,6 +14,7 @@ A web app that makes browsing music easier with Spotify's API
   - export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret' 
   - npm react-spotify-player 
 
+## Formatting
 ### Prettier for JavaScript Formatting 
 (source: [create-react-app.dev/docs/setting-up-your-editor](https://create-react-app.dev/docs/setting-up-your-editor))
 1. go to VSCode extensions and install 'Prettier - Code formatter'
