@@ -60,4 +60,4 @@ https://drive.google.com/file/d/1e2gVWYVGpzmR0QqcR_dSuGEGFb3_McMj/view?usp=shari
 
 ```
 ## Diagrams
-https://github.com/dkim157/Deepify/wiki/Diagrams-of-Deepify-Web-Application
+https://bit.ly/3xFoKDc
