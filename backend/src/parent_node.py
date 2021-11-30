@@ -50,7 +50,7 @@ class ParentNode():
         sp = spotipy.Spotify(auth_manager=auth_manager)
 
         if (search_value is None) or (search_value == ''):
-            print("artist not found")
+            return None
         else:
             data = {}
             search_result = sp.search(search_value.lower(), limit=1, offset=0, type='artist', market='US')

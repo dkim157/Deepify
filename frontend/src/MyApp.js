@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import Table from './Table';
-import CollabTable from './CollabTable';
 import Form from './Form';
 import backgroundVideo from './background.mp4'
 import 'animate.css';
 import SpotifyPlayer from 'react-spotify-player'
+import Swal from 'sweetalert2'
 
 
 function MyApp() {
@@ -19,10 +19,29 @@ function MyApp() {
  // this takes the artist data, console logs it, and then adds the artist to the list from prev assignment
  // use this data to create our starting page
  function updateList(person) {
-  toggle()
   makeGetCall(person).then( result => {
-  if (result)
-     setCharacters([...characters, result]);
+    //search not found
+    if (result == false){
+      Swal.fire({
+        title: "Search Not Found :(",
+        text: "Did you spell the name correctly?",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#3441B3"
+      })
+    }
+    //if search field empty
+    else if (result['name'] == "search_field_empty"){
+      Swal.fire({
+        title: "You didn't search for anything silly",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#3441B3"
+      })
+    }
+    //if artist data comes back
+    else if (result){
+      toggle()
+      setCharacters([...characters, result]);
+    }
   });
 }
 
