@@ -12,7 +12,7 @@ function MyApp() {
   const [isVisible, setIsVisible] = useState(true);
 
   function toggle() {
-    setIsVisible(wasVisible => !wasVisible);
+    setIsVisible(wasVisible => false);
   }
 
  // this takes the artist data, console logs it, and then adds the artist to the list from prev assignment
@@ -21,7 +21,7 @@ function MyApp() {
   toggle()
   makeGetCall(person).then( result => {
   if (result)
-     setCharacters([...characters, result] );
+     setCharacters([...characters, result]);
   });
 }
 
@@ -33,6 +33,7 @@ function buttonClick(){
     try {
      // this gets the artist data and returns it to updateList
      const response = await axios.get('http://localhost:5000/artist?name=' + person["name"]);
+     console.log(response.data.collabs[0].name);
      return response.data; 
     }
     catch (error) {
@@ -40,13 +41,34 @@ function buttonClick(){
      return false;
     }
   }
+
+
+  let choiceA = {name : "Bladee" };
+  let choiceB = {name : "Bladee" };
+  let choiceC = {name : "Bladee" };
+
+  if (characters.length > 1) {
+    characters.splice(0, 1);
+  }
+  
+  if (characters.length > 0) {
+    let index =  characters.length - 1;
+    
+    console.log(index);
+    console.log(characters);
+    console.log(characters[index].collabs[0].name);
+    choiceA = {name: characters[index].collabs[0].name};
+    choiceB = {name: characters[index].collabs[1].name};
+    choiceC = {name: characters[index].collabs[2].name};
+  }
+
   return (
     <div className="container">
-      <div class="video-wrap">
+      {/* <div class="video-wrap">
         <video autoPlay muted loop id="myVideo">
           <source src={backgroundVideo} type="video/mp4"></source>
         </video>
-      </div>
+      </div> */}
       <div class="video-overlay"></div>
       <div id="content">
         {isVisible &&(
@@ -64,6 +86,17 @@ function buttonClick(){
       <div class="parent-node">
         {!isVisible && (
           <Table characterData={characters} />
+        )}
+      </div>
+      <div>
+        {!isVisible && (
+          <button onClick={()=>updateList(choiceA)}> {choiceA.name} </button>
+        )}
+        {!isVisible && (
+          <button onClick={()=>updateList(choiceB)}> {choiceB.name} </button>
+        )}
+        {!isVisible && (
+          <button onClick={()=>updateList(choiceC)}> {choiceC.name} </button>
         )}
       </div>
     </div>
