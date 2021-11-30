@@ -468,7 +468,7 @@ pre > code {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 th,
 table.table1{
-  border: 2px solid #E1E1E1;
+  border: 2px solid pink;
   margin-left: auto;
   margin-right: auto;
 }
@@ -479,12 +479,12 @@ td.table1 {
   /* border-bottom: 1px solid #E1E1E1; } */
 
 th:first-child,
-table.table2{
-  border: 2px solid black;
+table.table1{
+  border: 2px solid pink;
   margin-left: auto;
   margin-right: auto;
 }
-td.table2:first-child {
+td.table1:first-child {
   text-align: center; 
 }
 
