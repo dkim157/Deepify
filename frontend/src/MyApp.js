@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import Table from './Table';
 import Form from './Form';
-import backgroundVideo from './background.mp4'
+import backgroundVideo from './bubbles.mp4'
 import 'animate.css';
 import SpotifyPlayer from 'react-spotify-player'
 import Swal from 'sweetalert2'
@@ -89,6 +89,9 @@ const size = {
       cState = false
       return (
         <div className="container">
+          <div class="video-wrap">
+            <video src="bg.mp4" autoplay="true" loop="true" muted playsinline></video>
+          </div>
           <div class="video-overlay"></div>
           <div id="content">
             {isVisible && (
@@ -149,11 +152,11 @@ const size = {
 
   return (
     <div className="container">
-      {/* <div class="video-wrap">
+      <div class="video-wrap">
         <video autoPlay muted loop id="myVideo">
           <source src={backgroundVideo} type="video/mp4"></source>
         </video>
-      </div> */}
+      </div>
       <div class="video-overlay"></div>
       <div id="content">
         {isVisible &&(
