@@ -108,8 +108,8 @@
 
   .no-collabs.column              { width: 60.3333333333%; }
   .no-collabs-two-thirds.column   { width: 30.3333333333%; }
-  .one-third.column               { width: 30.6666666667%; }
-  .two-thirds.column              { width: 65.3333333333%; }
+  .one-third.column               { width: 30.3333333333%; }
+  .two-thirds.column              { width: 60.3333333333%; }
 
   .one-half.column                { width: 48%; }
 
@@ -171,7 +171,7 @@ body {
 #content {
   position: absolute;
   min-width: 500px;
-  left: 50%;
+  left: 49%;
   top: 49%;
   transform: translate(-50%, -50%);
 }
@@ -221,6 +221,10 @@ body {
 .centerButton {
   text-align: center; 
   z-index: 1;
+}
+
+.row {
+  flex-grow: 1;
 }
 
 #credits{
