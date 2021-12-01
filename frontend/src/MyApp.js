@@ -82,11 +82,48 @@ const size = {
   if (characters.length > 0) {
     let index =  characters.length - 1;
     // set states to show/not show collabs and set name and track variables
-    if (characters[index].collabs.length == 0){
+    if (characters[index].collabs.length == 0)
+    {
       aState = false
       bState = false
       cState = false
-    }
+      return (
+        <div className="container">
+          <div class="video-overlay"></div>
+          <div id="content">
+            {isVisible && (
+              <div class="title animate__animated animate__fadeInDown">Deepify</div>
+            )}
+            {isVisible && (
+              <div class="title2 animate__animated animate__fadeIn">search an artist. find collabs. go deeper.</div>
+            )}
+            {isVisible && (
+              <div class="centerButton animate__animated animate__fadeInUp">
+                <Form handleSubmit={updateList} />
+              </div>
+            )}
+          </div>
+          <div class="row">
+            <div class="no-collabs column">
+              {!isVisible && (
+                <Table characterData={characters} />
+              )}
+            </div>
+            <div class="no-collabs-two-thirds column">
+              {!isVisible && (
+              <div>
+                <thead>
+                  <tr>
+                    <th>Collaborator</th>
+                    <th>Song</th>
+                  </tr>
+                </thead>
+              </div>)}
+            </div>
+          </div>
+        </div>
+        )
+      }
     else if (characters[index].collabs.length == 1){
       choiceA = {name: characters[index].collabs[0].name};
       choiceA_uri = characters[index].collabs[0].track;
