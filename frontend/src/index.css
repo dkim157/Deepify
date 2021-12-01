@@ -53,7 +53,7 @@
   background: black;
   background: linear-gradient(rgb(52, 65, 179), 10%,rgb(0, 0, 0));
   z-index: -1;
-  /* opacity: 0.85; */
+  opacity: 0.85;
 }
 
 
@@ -172,8 +172,8 @@ body {
   position: absolute;
   min-width: 500px;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -60%);
+  top: 49%;
+  transform: translate(-50%, -50%);
 }
 
 .parent-node {
@@ -211,8 +211,8 @@ body {
 }
 
 .title2 { 
-  font-family: 'Overlock', serif;
-  font-weight: 700;
+  font-family: 'Raleway', serif;
+  font-weight: 400;
   font-size: 2.6rem;
   text-align: center; 
   color: #ffffff;
@@ -224,7 +224,7 @@ body {
 }
 
 #credits{
-  font-family: 'Overlock', serif;
+  font-family: 'Raleway', serif;
 }
 
 
@@ -288,7 +288,8 @@ input[type="button"] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
-  margin-left: 10px; }
+  margin-left: 10px; 
+}
 .button:hover,
 button:hover,
 input[type="submit"]:hover,
@@ -343,14 +344,14 @@ input[type="button"].button-primary:focus {
   border-radius: 20px;
   border-width: 3px;
   border-color: #D1D1D1;
-  font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: 'Raleway', serif;
   font-size: 1.3rem;
   font-weight: 450;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   text-align: left;
   color: grey;
-  font-family: 'Overlock', cursive;
+  font-family: 'Raleway', serif;
   font-weight: 400;
   font-size: 1.4rem;
 }
@@ -358,9 +359,9 @@ input[type="email"],
 input[type="number"],
 input[type="search"],
 input[type="text"] {
-  height: 32px;
+  height: 30px;
   color: black;
-  font-family: 'Overlock', cursive;
+  font-family: 'Raleway', serif;
   font-weight: 400;
   font-size: 1.4rem;
 }
