@@ -3,8 +3,6 @@ from flask import request
 from flask import jsonify
 # for linking frontend-backend
 from flask_cors import CORS
-# for mongo db
-from model_mongodb import User
 # for parent nodes
 from parent_node import ParentNode
 

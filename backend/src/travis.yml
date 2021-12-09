@@ -6,4 +6,4 @@ install:
   - pip install -r requirements.txt
 script:
   - coverage run -m pytest -v
-  - coverage report -m --include="sample_backend.py"
+  - coverage report -m
