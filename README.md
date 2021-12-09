@@ -19,6 +19,9 @@ A web app that utilizes Spotify's API to make browsing music easier. By entering
 
 https://drive.google.com/file/d/1e2gVWYVGpzmR0QqcR_dSuGEGFb3_McMj/view?usp=sharing
 
+## Coverage
+https://drive.google.com/file/d/1Mqm3kf1aX9APDUn8i5t8AGRosZVxgxta/view?usp=sharing
+
 ## Formatting
 ### Prettier for JavaScript Formatting 
 (source: [create-react-app.dev/docs/setting-up-your-editor](https://create-react-app.dev/docs/setting-up-your-editor))
