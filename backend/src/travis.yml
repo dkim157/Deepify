@@ -7,3 +7,4 @@ install:
 script:
   - coverage run -m pytest test_backend.py
   - coverage report -m
+  - echo hello
